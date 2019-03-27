@@ -1,4 +1,3 @@
-#+TITLE: Which-key-posframe
 #+AUTHOR: Yanghao Xie
 * Which-key-posframe
 ** Introduction
