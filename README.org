@@ -2,7 +2,7 @@
 * Which-key-posframe
 ** Introduction
   This package is a [[https://github.com/justbur/emacs-which-key][emacs-which-key]] extension, which use [[https://github.com/tumashu/posframe][posframe]] to
-  show which-key popup.
+  show which-key popup. This package is inspired by [[https://github.com/tumashu/ivy-posframe][ivy-posframe]].
   [[./screenshot/which-key-posframe-screenshot.gif]]
 ** Table of Contents                                                  :TOC_3:
 - [[#which-key-posframe][Which-key-posframe]]
