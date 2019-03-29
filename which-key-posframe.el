@@ -126,7 +126,8 @@ of the buffer text to be displayed in the popup"
 
 (defun which-key-posframe--hide ()
   "Hide which-key buffer when posframe popup is used."
-  (posframe-hide which-key--buffer))
+  (when (buffer-live-p which-key--buffer)
+    (posframe-hide which-key--buffer)))
 
 (defun which-key-posframe--max-dimensions ()
   "Return max-dimensions of posframe (height . width) in lines and characters respectably."
