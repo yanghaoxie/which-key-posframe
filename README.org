@@ -1,5 +1,6 @@
 #+AUTHOR: Yanghao Xie
 * Which-key-posframe
+  [[https://melpa.org/#/which-key-posframe][file:https://melpa.org/packages/which-key-posframe-badge.svg]]
 ** Introduction
   This package is a [[https://github.com/justbur/emacs-which-key][emacs-which-key]] extension, which use [[https://github.com/tumashu/posframe][posframe]] to
   show which-key popup. This package is inspired by [[https://github.com/tumashu/ivy-posframe][ivy-posframe]].
