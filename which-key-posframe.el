@@ -28,6 +28,7 @@
 ;; Check out the README for more information.
 
 ;;; Code:
+(require 'cl-lib)
 (require 'posframe)
 (require 'which-key)
 
