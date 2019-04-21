@@ -9,11 +9,15 @@
 - [[#which-key-posframe][Which-key-posframe]]
   - [[#introduction][Introduction]]
   - [[#install][Install]]
+    - [[#melpa][MELPA]]
     - [[#use-package][Use package]]
   - [[#customization][Customization]]
     - [[#position-of-posframe][Position of Posframe]]
 
 ** Install
+*** MELPA
+    After setting up [[http://melpa.org][MELPA]] as a repository, use =M-x package-install which-key-posframe=
+    or your preferred method.
 *** Use package
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package
