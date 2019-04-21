@@ -31,9 +31,6 @@
 (require 'posframe)
 (require 'which-key)
 
-(declare-function posframe-show "posframe")
-(declare-function posframe-hide "posframe")
-
 (defgroup which-key-posframe nil
   "Using posframe to show which key"
   :group 'which-key
