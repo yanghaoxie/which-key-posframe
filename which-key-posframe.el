@@ -94,6 +94,18 @@ When 0, no border is showed."
   "Face used by the which-key-posframe's border."
   :group 'which-key-posframe)
 
+(defvar which-key-popup-type--previous nil
+  "The previous value of `which-key-popup-type'")
+
+(defvar which-key-custom-show-popup-function--previous nil
+  "The previous value of `which-key-custom-show-popup-function'")
+
+(defvar which-key-custom-hide-popup-function--previous nil
+  "The previous value of `which-key-custom-hide-popup-function'")
+
+(defvar which-key-custom-popup-max-dimensions-function--previous nil
+  "The previous value of `which-key-custom-popup-max-dimensions-function'")
+
 (defun which-key-posframe--popup-max-dimensions ()
   "Dimesion functions should return the maximum possible (height .
 width) of the intended popup.  SELECTED-WINDOW-WIDTH is the
@@ -135,13 +147,35 @@ of the buffer text to be displayed in the popup"
 (defun which-key-posframe-enable ()
   "Enable which-key-posframe."
   (interactive)
-  (require 'which-key)
-  (setq which-key-popup-type 'custom
-	which-key-custom-show-popup-function 'which-key-posframe--show-buffer
-	which-key-custom-hide-popup-function 'which-key-posframe--hide
-	which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions)
-  (advice-add 'which-key--popup-max-dimensions :override 'which-key-posframe--popup-max-dimensions)
-  (message "which-key-posframe is enabled"))
+  (message "This command is obsolete, please use `which-key-posframe-mode'"))
+
+;;;###autoload
+(define-minor-mode which-key-posframe-mode
+  "Toggle which key posframe mode on of off."
+  :group 'which-key-posframe
+  :global t
+  :lighter nil
+  (if which-key-posframe-mode
+      (progn
+	(setq which-key-popup-type--previous which-key-popup-type
+	      which-key-custom-show-popup-function--previous which-key-custom-show-popup-function
+	      which-key-custom-hide-popup-function--previous which-key-custom-hide-popup-function
+	      which-key-custom-popup-max-dimensions-function--previous which-key-custom-popup-max-dimensions-function
+	      which-key-popup-type 'custom
+	      which-key-custom-show-popup-function 'which-key-posframe--show-buffer
+	      which-key-custom-hide-popup-function 'which-key-posframe--hide
+	      which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions)
+	(advice-add 'which-key--popup-max-dimensions :override 'which-key-posframe--popup-max-dimensions))
+    (posframe-delete which-key--buffer)
+    (setq which-key-popup-type which-key-popup-type--previous
+	  which-key-custom-show-popup-function which-key-custom-show-popup-function--previous
+	  which-key-custom-hide-popup-function which-key-custom-hide-popup-function--previous
+	  which-key-custom-popup-max-dimensions-function which-key-custom-popup-max-dimensions-function--previous
+	  which-key-popup-type--previous nil
+	  which-key-custom-show-popup-function--previous nil
+	  which-key-custom-hide-popup-function--previous nil
+	  which-key-custom-popup-max-dimensions-function--previous nil)
+    (advice-remove 'which-key--popup-max-dimensions #'which-key-posframe--popup-max-dimensions)))
 
 (provide 'which-key-posframe)
 
