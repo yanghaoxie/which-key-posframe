@@ -22,6 +22,7 @@
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package
     :load-path "path/to/which-key-posframe.el"
+    :config
     (which-key-posframe-mode))
 #+END_SRC
 ** Customization
