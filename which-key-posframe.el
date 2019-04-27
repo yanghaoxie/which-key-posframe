@@ -58,11 +58,6 @@ When nil, Using current frame's font as fallback."
   :group 'which-key-posframe
   :type 'number)
 
-(defcustom which-key-posframe-height nil
-  "The height of which-key-posframe."
-  :group 'which-key-posframe
-  :type 'number)
-
 (defcustom which-key-posframe-min-width nil
   "The width of which-key-min-posframe."
   :group 'which-key-posframe
