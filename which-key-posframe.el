@@ -104,12 +104,13 @@ of the buffer text to be displayed in the popup"
     (posframe-hide which-key--buffer)))
 
 (defun which-key-posframe--max-dimensions (_)
-  "Return max-dimensions of posframe (height . width) in lines and characters respectably."
+  "Return max-dimensions of posframe.
+The returned value has the form (HEIGHT . WIDTH) in lines and
+characters respectably."
   (cons (frame-height) (frame-width)))
 
 ;;;###autoload
-(define-minor-mode which-key-posframe-mode
-  "Toggle which key posframe mode on of off."
+(define-minor-mode which-key-posframe-mode nil
   :group 'which-key-posframe
   :global t
   :lighter nil
