@@ -119,12 +119,6 @@ of the buffer text to be displayed in the popup"
   (cons (frame-height) (frame-width)))
 
 ;;;###autoload
-(defun which-key-posframe-enable ()
-  "Enable which-key-posframe."
-  (interactive)
-  (message "This command is obsolete, please use `which-key-posframe-mode'"))
-
-;;;###autoload
 (define-minor-mode which-key-posframe-mode
   "Toggle which key posframe mode on of off."
   :group 'which-key-posframe
