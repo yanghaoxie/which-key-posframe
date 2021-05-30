@@ -107,7 +107,7 @@ of the buffer text to be displayed in the popup"
   "Return max-dimensions of posframe.
 The returned value has the form (HEIGHT . WIDTH) in lines and
 characters respectably."
-  (cons (frame-height) (frame-width)))
+  (cons (1- (frame-height)) (frame-width)))
 
 ;;;###autoload
 (define-minor-mode which-key-posframe-mode nil
