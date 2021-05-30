@@ -81,17 +81,6 @@ When 0, no border is showed."
 (defvar which-key-custom-popup-max-dimensions-function--previous nil
   "The previous value of `which-key-custom-popup-max-dimensions-function'")
 
-(defun which-key-posframe--popup-max-dimensions ()
-  "Dimesion functions should return the maximum possible (height .
-width) of the intended popup.  SELECTED-WINDOW-WIDTH is the
-width of currently active window, not the which-key buffer
-window."
-  (cl-case which-key-popup-type
-    (minibuffer (which-key--minibuffer-max-dimensions))
-    (side-window (which-key--side-window-max-dimensions))
-    (frame (which-key--frame-max-dimensions))
-    (custom (funcall which-key-custom-popup-max-dimensions-function))))
-
 (defun which-key-posframe--show-buffer (act-popup-dim)
   "Show which-key buffer when popup type is posframe.
 Argument ACT-POPUP-DIM includes the dimension, (height . width)
@@ -114,7 +103,7 @@ of the buffer text to be displayed in the popup"
   (when (buffer-live-p which-key--buffer)
     (posframe-hide which-key--buffer)))
 
-(defun which-key-posframe--max-dimensions ()
+(defun which-key-posframe--max-dimensions (_)
   "Return max-dimensions of posframe (height . width) in lines and characters respectably."
   (cons (frame-height) (frame-width)))
 
@@ -133,8 +122,7 @@ of the buffer text to be displayed in the popup"
 	      which-key-popup-type 'custom
 	      which-key-custom-show-popup-function 'which-key-posframe--show-buffer
 	      which-key-custom-hide-popup-function 'which-key-posframe--hide
-	      which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions)
-	(advice-add 'which-key--popup-max-dimensions :override 'which-key-posframe--popup-max-dimensions))
+	      which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions))
     (posframe-delete which-key--buffer)
     (setq which-key-popup-type which-key-popup-type--previous
 	  which-key-custom-show-popup-function which-key-custom-show-popup-function--previous
@@ -143,8 +131,7 @@ of the buffer text to be displayed in the popup"
 	  which-key-popup-type--previous nil
 	  which-key-custom-show-popup-function--previous nil
 	  which-key-custom-hide-popup-function--previous nil
-	  which-key-custom-popup-max-dimensions-function--previous nil)
-    (advice-remove 'which-key--popup-max-dimensions #'which-key-posframe--popup-max-dimensions)))
+	  which-key-custom-popup-max-dimensions-function--previous nil)))
 
 (provide 'which-key-posframe)
 
