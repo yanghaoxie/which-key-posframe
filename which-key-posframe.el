@@ -81,11 +81,16 @@ When 0, no border is showed."
 (defvar which-key-custom-popup-max-dimensions-function--previous nil
   "The previous value of `which-key-custom-popup-max-dimensions-function'")
 
+(defvar which-key-posframe--popup-visible nil
+  ;; workaround for https://github.com/yanghaoxie/which-key-posframe/issues/7
+  "Whether or not the which-key-posframe popup is currently visible.")
+
 (defun which-key-posframe--show-buffer (act-popup-dim)
   "Show which-key buffer when popup type is posframe.
 Argument ACT-POPUP-DIM includes the dimension, (height . width)
 of the buffer text to be displayed in the popup"
   (when (posframe-workable-p)
+    (setq which-key-posframe--popup-visible t)
     (save-window-excursion
       (posframe-show
        which-key--buffer
@@ -102,7 +107,9 @@ of the buffer text to be displayed in the popup"
 
 (defun which-key-posframe--hide ()
   "Hide which-key buffer when posframe popup is used."
-  (when (buffer-live-p which-key--buffer)
+  (when (and (buffer-live-p which-key--buffer)
+             which-key-posframe--popup-visible)
+    (setq which-key-posframe--popup-visible nil)
     (posframe-hide which-key--buffer)))
 
 (defun which-key-posframe--max-dimensions (_)
