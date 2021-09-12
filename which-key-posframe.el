@@ -124,24 +124,23 @@ characters respectably."
   :global t
   :lighter nil
   (if which-key-posframe-mode
-      (progn
-	(setq which-key-popup-type--previous which-key-popup-type
-	      which-key-custom-show-popup-function--previous which-key-custom-show-popup-function
-	      which-key-custom-hide-popup-function--previous which-key-custom-hide-popup-function
-	      which-key-custom-popup-max-dimensions-function--previous which-key-custom-popup-max-dimensions-function
-	      which-key-popup-type 'custom
-	      which-key-custom-show-popup-function 'which-key-posframe--show-buffer
-	      which-key-custom-hide-popup-function 'which-key-posframe--hide
-	      which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions))
+      (setq which-key-popup-type--previous which-key-popup-type
+            which-key-custom-show-popup-function--previous which-key-custom-show-popup-function
+            which-key-custom-hide-popup-function--previous which-key-custom-hide-popup-function
+            which-key-custom-popup-max-dimensions-function--previous which-key-custom-popup-max-dimensions-function
+            which-key-popup-type 'custom
+            which-key-custom-show-popup-function 'which-key-posframe--show-buffer
+            which-key-custom-hide-popup-function 'which-key-posframe--hide
+            which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions)
     (posframe-delete which-key--buffer)
     (setq which-key-popup-type which-key-popup-type--previous
-	  which-key-custom-show-popup-function which-key-custom-show-popup-function--previous
-	  which-key-custom-hide-popup-function which-key-custom-hide-popup-function--previous
-	  which-key-custom-popup-max-dimensions-function which-key-custom-popup-max-dimensions-function--previous
-	  which-key-popup-type--previous nil
-	  which-key-custom-show-popup-function--previous nil
-	  which-key-custom-hide-popup-function--previous nil
-	  which-key-custom-popup-max-dimensions-function--previous nil)))
+          which-key-custom-show-popup-function which-key-custom-show-popup-function--previous
+          which-key-custom-hide-popup-function which-key-custom-hide-popup-function--previous
+          which-key-custom-popup-max-dimensions-function which-key-custom-popup-max-dimensions-function--previous
+          which-key-popup-type--previous nil
+          which-key-custom-show-popup-function--previous nil
+          which-key-custom-hide-popup-function--previous nil
+          which-key-custom-popup-max-dimensions-function--previous nil)))
 
 (provide 'which-key-posframe)
 
