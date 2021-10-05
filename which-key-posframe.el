@@ -116,7 +116,7 @@ characters respectably."
   :group 'which-key-posframe
   :global t
   :lighter nil
-  (if which-key-posframe-mode
+  (if and(which-key-posframe-mode (display-graphic-p))
       (progn
 	(setq which-key-popup-type--previous which-key-popup-type
 	      which-key-custom-show-popup-function--previous which-key-custom-show-popup-function
