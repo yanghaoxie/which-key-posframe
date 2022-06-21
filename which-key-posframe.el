@@ -139,7 +139,7 @@ characters respectably."
 (provide 'which-key-posframe)
 
 ;; Local Variables:
-;; coding: utf-8-unix
+;; coding: utf-8
 ;; End:
 
 ;;; which-key-posframe.el ends here
