@@ -96,6 +96,7 @@ of the buffer text to be displayed in the popup"
        :foreground-color (face-attribute 'which-key-posframe :foreground nil t)
        :height (car act-popup-dim)
        :width (cdr act-popup-dim)
+       :lines-truncate t
        :internal-border-width which-key-posframe-border-width
        :internal-border-color (face-attribute 'which-key-posframe-border :background nil t)
        :override-parameters which-key-posframe-parameters))))
