@@ -7,7 +7,7 @@
 ;; URL: https://github.com/yanghaoxie/which-key-posframe
 ;; Version: 0.2.0
 ;; Keywords: convenience, bindings, tooltip
-;; Package-Requires: ((emacs "26.0")(posframe "0.4.3")(which-key "3.3.2"))
+;; Package-Requires: ((emacs "26.0") (posframe "0.4.3") (which-key "3.3.2"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
 ;; Check out the README for more information.
 
 ;;; Code:
+
 (require 'cl-lib)
 (require 'posframe)
 (require 'which-key)
