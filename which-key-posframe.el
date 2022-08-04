@@ -98,7 +98,8 @@ of the buffer text to be displayed in the popup"
        :width (cdr act-popup-dim)
        :lines-truncate t
        :internal-border-width which-key-posframe-border-width
-       :internal-border-color (face-attribute 'which-key-posframe-border :background nil t)
+       :internal-border-color (face-attribute 'which-key-posframe-border
+                                              :background nil t)
        :override-parameters which-key-posframe-parameters))))
 
 (defun which-key-posframe--hide ()
@@ -111,36 +112,47 @@ of the buffer text to be displayed in the popup"
 The returned value has the form (HEIGHT . WIDTH) in lines and
 characters respectably."
   (cons (- (frame-height) 2) ; account for mode-line and minibuffer
-	(frame-width)))
+        (frame-width)))
 
 ;;;###autoload
 (define-minor-mode which-key-posframe-mode nil
   :group 'which-key-posframe
   :global t
   :lighter nil
-  (if which-key-posframe-mode
-      (progn
-	(setq which-key-popup-type--previous which-key-popup-type
-	      which-key-custom-show-popup-function--previous which-key-custom-show-popup-function
-	      which-key-custom-hide-popup-function--previous which-key-custom-hide-popup-function
-	      which-key-custom-popup-max-dimensions-function--previous which-key-custom-popup-max-dimensions-function
-	      which-key-popup-type 'custom
-	      which-key-custom-show-popup-function 'which-key-posframe--show-buffer
-	      which-key-custom-hide-popup-function 'which-key-posframe--hide
-	      which-key-custom-popup-max-dimensions-function 'which-key-posframe--max-dimensions))
+  (cond
+   (which-key-posframe-mode
+    (setq which-key-popup-type--previous
+          which-key-popup-type)
+    (setq which-key-custom-show-popup-function--previous
+          which-key-custom-show-popup-function)
+    (setq which-key-custom-hide-popup-function--previous
+          which-key-custom-hide-popup-function)
+    (setq which-key-custom-popup-max-dimensions-function--previous
+          which-key-custom-popup-max-dimensions-function)
+    (setq which-key-popup-type 'custom)
+    (setq which-key-custom-show-popup-function 'which-key-posframe--show-buffer)
+    (setq which-key-custom-hide-popup-function 'which-key-posframe--hide)
+    (setq which-key-custom-popup-max-dimensions-function
+          'which-key-posframe--max-dimensions))
+   (t
     (posframe-delete which-key--buffer)
-    (setq which-key-popup-type which-key-popup-type--previous
-	  which-key-custom-show-popup-function which-key-custom-show-popup-function--previous
-	  which-key-custom-hide-popup-function which-key-custom-hide-popup-function--previous
-	  which-key-custom-popup-max-dimensions-function which-key-custom-popup-max-dimensions-function--previous
-	  which-key-popup-type--previous nil
-	  which-key-custom-show-popup-function--previous nil
-	  which-key-custom-hide-popup-function--previous nil
-	  which-key-custom-popup-max-dimensions-function--previous nil)))
+    (setq which-key-popup-type
+          which-key-popup-type--previous)
+    (setq which-key-custom-show-popup-function
+          which-key-custom-show-popup-function--previous)
+    (setq which-key-custom-hide-popup-function
+          which-key-custom-hide-popup-function--previous)
+    (setq which-key-custom-popup-max-dimensions-function
+          which-key-custom-popup-max-dimensions-function--previous)
+    (setq which-key-popup-type--previous nil)
+    (setq which-key-custom-show-popup-function--previous nil)
+    (setq which-key-custom-hide-popup-function--previous nil)
+    (setq which-key-custom-popup-max-dimensions-function--previous nil))))
 
 (provide 'which-key-posframe)
 
 ;; Local Variables:
+;; indent-tabs-mode: nil
 ;; coding: utf-8-unix
 ;; End:
 
